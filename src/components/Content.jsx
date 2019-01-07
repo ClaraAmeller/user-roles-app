@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
 
 import JoinProjectForm from "./JoinProjectForm";
+import UserProjectsList from "./UserProjectsList";
 
 class Content extends Component {
   state = { roles: null, projects: null }
@@ -30,7 +31,14 @@ class Content extends Component {
             <div className="pt-24 pb-8 lg:pt-28 w-full">
               <div className="markdown mb-6 px-6 max-w-lg mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
                 {currentUser ? (
-                  <JoinProjectForm currentUser={currentUser} projects={projects} roles={roles} />
+                  <Fragment>
+                    <JoinProjectForm currentUser={currentUser} projects={projects} roles={roles} />
+                    <UserProjectsList
+                      currentUserId={currentUser.id}
+                      projects={projects}
+                      roles={roles}
+                    />
+                  </Fragment>
                 ) : (
                     <h1>Select a user</h1>
                   )}
