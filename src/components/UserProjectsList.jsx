@@ -9,6 +9,14 @@ class UserProjectsList extends Component {
       .then(res => this.setState({ userProjects: res.data }))
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.newUserProject !== nextProps.newUserProject) {
+      this.setState(prevState => (
+        { userProjects: [ ...prevState.userProjects, nextProps.newUserProject ] }
+      ))
+    }
+  }
+
   findProject = id => this.props.projects.find(project => project.id === id).name;
 
   findRole = id => this.props.roles.find(role => role.id === id).name;

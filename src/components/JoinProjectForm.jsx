@@ -26,11 +26,11 @@ class JoinProjectForm extends Component {
         });
       axios
         .post("http://localhost:3000/project_users", projectUser)
-        .then(() =>
+        .then(res =>
           this.setState({
             displayAlert: true,
             alertType: <this.SuccessAlert />
-          })
+          }, () => this.props.onNewProject(res.data))
         )
         .catch(error => console.log("error", error));
     });
