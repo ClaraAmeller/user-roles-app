@@ -11,18 +11,22 @@ const Header = () => (
 					<h1 className="w-full text-center lg:px-6 lg:w-3/4 xl:px-12">User Roles</h1>
 					<div className="hidden lg:block lg:w-1/4 px-6">
 						<div className="flex justify-start items-center text-grey">
-							<a className="block flex items-center hover:text-grey-darker mr-6" href="https://github.com/ClaraAmeller">
-								Github
-						</a>
-							<a className="block flex items-center hover:text-grey-darker mr-6" href="https://linkedin.com/in/claraameller">
-								Linkedin
-						</a>
+							<a className="block flex items-center text-black hover:text-grey-darker mr-6" href="https://github.com/ClaraAmeller">
+								<span className="text-2xl">
+									<i className="fab fa-github"></i>
+								</span>
+							</a>
+							<a className="block flex items-center text-black hover:text-grey-darker mr-6" href="https://linkedin.com/in/claraameller">
+								<span className="text-2xl">
+									<i className="fab fa-linkedin"></i>
+								</span>
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div >
 );
 
 export default Header;

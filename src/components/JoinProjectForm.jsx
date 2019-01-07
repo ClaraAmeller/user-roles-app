@@ -50,15 +50,9 @@ class JoinProjectForm extends Component {
       <strong className="font-bold">You're already in this project</strong>
       <span
         onClick={() => this.setState({ displayAlert: false })}
-        className="absolute pin-t pin-b pin-r px-4 py-3">
-        <svg
-          className="fill-current h-6 w-6 text-red"
-          role="button"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20">
-          <title>Close</title>
-          <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-        </svg>
+        className="absolute cursor-pointer pin-t pin-b pin-r px-4 py-3"
+      >
+        <i className="fas fa-times"></i>
       </span>
     </div>
   );
@@ -68,15 +62,9 @@ class JoinProjectForm extends Component {
       <strong className="font-bold">Joined successfully!</strong>
       <span
         onClick={() => this.setState({ displayAlert: false })}
-        className="absolute pin-t pin-b pin-r px-4 py-3">
-        <svg
-          className="fill-current h-6 w-6 text-green"
-          role="button"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20">
-          <title>Close</title>
-          <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-        </svg>
+        className="absolute cursor-pointer pin-t pin-b pin-r px-4 py-3"
+      >
+        <i className="fas fa-times"></i>
       </span>
     </div>
   );
@@ -115,13 +103,8 @@ class JoinProjectForm extends Component {
                     </option>
                   ))}
                 </select>
-                <div className="absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
+                <div className="absolute pin-y pin-r flex items-center pr-4 text-grey-darker">
+                  <i className="fas fa-angle-down"></i>
                 </div>
               </div>
             </div>
@@ -142,13 +125,8 @@ class JoinProjectForm extends Component {
                     </option>
                   ))}
                 </select>
-                <div className="absolute pin-y pin-r flex items-center px-2 text-grey-darker">
-                  <svg
-                    className="fill-current h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
+                <div className="absolute pin-y pin-r flex items-center pr-4 text-grey-darker">
+                  <i className="fas fa-angle-down"></i>
                 </div>
               </div>
             </div>
