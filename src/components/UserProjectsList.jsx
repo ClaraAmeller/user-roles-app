@@ -1,49 +1,40 @@
 import React, { Component, Fragment } from "react";
-import axios from "axios";
+import classnames from "classnames";
+import { connect } from "react-redux";
+import { fetchUserProjects, removeRole } from "../actions/index";
 
 class UserProjectsList extends Component {
-  state = { userProjects: null };
-
   componentDidMount() {
-    axios.get(`http://localhost:3000/project_users?user_id=${this.props.currentUserId}`)
-      .then(res => this.setState({ userProjects: res.data }))
+    this.props.dispatch(fetchUserProjects(this.props.currentUser.id));
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.newUserProject !== nextProps.newUserProject) {
-      this.setState(prevState => (
-        { userProjects: [ ...prevState.userProjects, nextProps.newUserProject ] }
-      ))
-    }
-  }
+  findProject = projectId => (
+    this.props.projects.find(project => project.id === projectId).name
+  )
 
-  findProject = id => this.props.projects.find(project => project.id === id).name;
+  findRole = roleId => (
+    this.props.roles.find(role => role.id === roleId).name
+  )
 
-  findRole = id => this.props.roles.find(role => role.id === id).name;
-
-  leaveProject = id => {
-    const restProjects = this.state.userProjects.filter(userProject => userProject.id !== id);
-    axios.delete(`http://localhost:3000/project_users/${id}`)
-      .then(() => this.setState({ userProjects: restProjects }))
-  };
+  leaveProject = projectId => this.props.dispatch(removeRole(projectId));
 
   render() {
-    const { userProjects } = this.state;
+    const { userProjects, projects, roles, loading } = this.props;
 
     return (
       <Fragment>
-        <h2 className="mt-12 mb-6">Your projects</h2>
-        {userProjects && userProjects.map(userProject => (
+        <h2 className="mt-12 mb-6 text-lg">Your projects</h2>
+        {!!userProjects && userProjects.map(userProject => (
           <div key={userProject.id} className="flex mb-4 px-4 h-16 shadow">
             <div className="flex-1 self-center">
-              {this.findProject(userProject.project_id)}
+              {!!projects && this.findProject(userProject.project_id)}
             </div>
             <div className="flex-1 self-center uppercase text-grey-darker text-sm font-bold">
-              {this.findRole(userProject.role_id)}
+              {!!roles && this.findRole(userProject.role_id)}
             </div>
             <div
-              onClick={() => this.leaveProject(userProject.id)}
-              className="px-2 cursor-pointer self-center uppercase text-grey-darker text-sm font-bold"
+              onClick={() => loading ? null : this.leaveProject(userProject.id)}
+              className={classnames("px-2 cursor-pointer self-center uppercase text-grey-darker text-sm font-bold", { "opacity-50 cursor-not-allowed": loading })}
             >
               <i className="fas fa-ban"></i>
             </div>
@@ -54,4 +45,12 @@ class UserProjectsList extends Component {
   };
 };
 
-export default UserProjectsList;
+const mapStateToProps = state => ({
+  roles: state.rolesList.roles,
+  projects: state.projectsList.projects,
+  loading: state.userProjectsList.loading,
+  currentUser: state.usersList.currentUser,
+  userProjects: state.userProjectsList.userProjects
+});
+
+export default connect(mapStateToProps)(UserProjectsList);
