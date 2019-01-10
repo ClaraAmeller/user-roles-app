@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import usersList from "./usersListReducer";
-import rolesList from "./rolesListReducer";
-import projectsList from "./projectsListReducer";
+import usersList from "./usersList";
+import rolesList from "./rolesList";
+import projectsList from "./projectsList";
 import userProjectsList from "./userProjectsList";
 
 export default combineReducers({

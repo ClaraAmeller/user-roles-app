@@ -11,12 +11,11 @@ import {
 const initialState = {
   userProjects: [],
   loading: false,
-  error: null,
   alertType: null,
   displayAlert: false
 }
 
-function userProjectsListReducer(state = initialState, action) {
+function userprojectsList(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_USER_PROJECTS:
       return {
@@ -67,4 +66,4 @@ function userProjectsListReducer(state = initialState, action) {
   }
 };
 
-export default userProjectsListReducer;
+export default userprojectsList;

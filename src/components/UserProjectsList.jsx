@@ -1,12 +1,23 @@
 import React, { Component, Fragment } from "react";
 import classnames from "classnames";
 import { connect } from "react-redux";
-import { fetchUserProjects, removeRole } from "../actions/index";
+import { fetchUserProjects } from "../actions/fetchUserProjects";
+import { removeRole } from "../actions/removeRole";
 
 class UserProjectsList extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchUserProjects(this.props.currentUser.id));
+    this.fetchData();
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.fetchData();
+    }
+  }
+
+  fetchData = () => (
+    this.props.dispatch(fetchUserProjects(this.props.currentUser.id))
+  )
 
   findProject = projectId => (
     this.props.projects.find(project => project.id === projectId).name
@@ -25,7 +36,7 @@ class UserProjectsList extends Component {
       <Fragment>
         <h2 className="mt-12 mb-6 text-lg">Your projects</h2>
         {!!userProjects && userProjects.map(userProject => (
-          <div key={userProject.id} className="flex mb-4 px-4 h-16 shadow">
+          <div key={userProject.id} className="flex mb-4 px-4 h-16 shadow text-sm lg:text-base">
             <div className="flex-1 self-center">
               {!!projects && this.findProject(userProject.project_id)}
             </div>

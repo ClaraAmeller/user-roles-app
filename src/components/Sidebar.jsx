@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchUsers, selectUser } from "../actions/index";
+import { fetchUsers } from "../actions/fetchUsers";
+import { selectUser } from "../actions/index";
 
 class Sidebar extends Component {
 	componentDidMount() {

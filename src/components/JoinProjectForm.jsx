@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
 import classnames from "classnames";
 import { connect } from "react-redux";
-import { addRole, closeAlert } from "../actions/index";
-import { fetchRoles, fetchProjects } from "../actions/index";
-
+import { addRole } from "../actions/addRole";
+import { closeAlert } from "../actions/closeAlert";
+import { fetchRoles } from "../actions/fetchRoles";
+import { fetchProjects } from "../actions/fetchProjects";
 
 class JoinProjectForm extends Component {
   state = { selectedProject: 1, selectedRole: 1 };
@@ -34,8 +35,9 @@ class JoinProjectForm extends Component {
     const Alert = ({ type }) => {
       const message = type === "error" ? "You're already in this project" : "Joined successfully!";
       const colour = type === "error" ? "red" : "green";
+
       return (
-        <div className={`bg-${colour}-lightest border border-${colour}-light text-${colour}-dark mb-6 px-4 py-3 rounded`}>
+        <div className={`bg-${colour}-lightest border border-${colour}-light text-${colour}-dark mb-6 px-4 py-3 rounded relative`}>
           <strong className="font-bold">{message}</strong>
           <span
             onClick={() => this.props.dispatch(closeAlert())}

@@ -5,7 +5,7 @@ const initialState = {
   currentUser: { id: 1, name: "John Doe" }
 }
 
-function usersListReducer(state = initialState, action) {
+function usersList(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_USERS:
       return {
@@ -22,4 +22,4 @@ function usersListReducer(state = initialState, action) {
   }
 };
 
-export default usersListReducer;
+export default usersList;
