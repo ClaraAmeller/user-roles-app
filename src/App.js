@@ -7,7 +7,7 @@ import Content from "./components/Content";
 const App = () => (
   <Fragment>
     <Header />
-    <div className="w-full max-w-screen-xl mx-auto px-6">
+    <div className="w-full max-w-screen-xl mx-auto px-3 lg:px-6">
       <div className="lg:flex mx-6">
         <Sidebar />
         <Content />
